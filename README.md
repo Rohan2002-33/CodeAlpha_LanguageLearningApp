@@ -1,17 +1,51 @@
-# lingo_learn
+# LingoLearn – Language Learning App
 
-A new Flutter project.
+Flutter + Firebase language learning app built for the **CodeAlpha App Development Internship (Task 4)**.
 
-## Getting Started
+## Features
+- Email/password authentication (Firebase Auth)
+- Learn Spanish, French or German (app UI in English)
+- Categories: Vocabulary, Phrases, Grammar
+- Daily "Lesson of the day"
+- Flip flashcards with translation, pronunciation guide and example sentences
+- Text-to-speech audio pronunciation
+- Multiple-choice quizzes with scoring and XP
+- Streaks, levels, daily goal and 7-day activity chart
+- Realtime cloud sync with Cloud Firestore (offline cache enabled)
 
-This project is a starting point for a Flutter application.
+## Tech stack
+Flutter · Dart · Provider · Firebase Auth · Cloud Firestore · flutter_tts · google_fonts
 
-A few resources to get you started if this is your first Flutter project:
+## Project structure
+```
+lib/
+├── core/        theme, constants, validators, date utils
+├── data/        learning content
+├── models/      Language, Lesson, StudyItem, QuizQuestion, UserProfile
+├── providers/   AuthProvider, ProgressProvider
+├── screens/     all app screens
+├── services/    auth, firestore, tts, quiz generator
+└── widgets/     reusable UI components
+```
 
-- [Learn Flutter](https://docs.flutter.dev/get-started/learn-flutter)
-- [Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Flutter learning resources](https://docs.flutter.dev/reference/learning-resources)
+## Run locally
+```bash
+git clone https://github.com/YOUR_USERNAME/CodeAlpha_LanguageLearningApp.git
+cd CodeAlpha_LanguageLearningApp
+flutter pub get
+flutter run
+```
+To use your own Firebase project: `flutterfire configure`, enable Email/Password
+auth, create Firestore and publish `firestore.rules`.
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Tests
+```bash
+flutter test
+```
+
+## Firestore data model
+```
+users/{uid}                  name, email, languageCode, xp, streak, lastStudyDate, completedLessons[]
+users/{uid}/activity/{day}   date, xp
+users/{uid}/quizResults/{id} lessonId, score, total, createdAt
+```
