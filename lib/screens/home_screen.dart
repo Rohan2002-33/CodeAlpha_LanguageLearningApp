@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:lingo_learn/core/app_theme.dart';
 import 'package:lingo_learn/core/constants.dart';
 import 'package:lingo_learn/data/content_repository.dart';
+import 'package:lingo_learn/models/lesson.dart';
 import 'package:lingo_learn/providers/progress_provider.dart';
 import 'package:lingo_learn/screens/lesson_detail_screen.dart';
 import 'package:lingo_learn/widgets/category_progress_list.dart';
